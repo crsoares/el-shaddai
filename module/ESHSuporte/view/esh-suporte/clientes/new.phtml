@@ -1,0 +1,33 @@
+<h4>Cadastro de Clientes</h4>
+<?php
+$form = $this->form;
+$form->prepare();
+$form->setAttribute('action', $this->url('esh-suporte-cadastro'));
+$form->setAttribute('method', 'post');
+echo $this->form()->openTag($form);
+?>
+<div class="row">
+	<div class="col-xs-4">
+		<?php echo $this->formRow($form->get('cliente')->get('razaoSocial')); ?>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-4">
+		<?php echo $this->formRow($form->get('cliente')->get('nomeFantasia')); ?>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-4">
+		<?php echo $this->formRow($form->get('cliente')->get('nomeRepresentante')); ?>
+	</div>
+</div>
+<br />
+<div class="row">
+	<div class="col-xs-3">
+		<?php 
+			echo $this->formHidden($form->get('csrf'));
+			echo $this->formRow($form->get('submit')); 
+		?>
+	</div>
+</div>
+<?php echo $this->form()->closeTag(); ?>
