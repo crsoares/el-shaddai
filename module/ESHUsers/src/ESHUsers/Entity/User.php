@@ -71,6 +71,13 @@ class User
 		$this->activationKey = sha1($this->email.$this->salt);
 		$this->token = base_convert(sha1(uniqid(mt_rand(), true)), 16, 36);
 	}
+
+	public function encryptPassword($password)
+	{
+		return base64_encode(
+			Pbkdf2::clalc('sha256', $password, $this->salt, 10000, strlen($password)*2);
+		);
+	}
 	
 	public function getId()
 	{
