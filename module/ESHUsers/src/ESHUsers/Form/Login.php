@@ -4,6 +4,8 @@ namespace ESHUsers\Form;
 
 use Zend\Form\Form;
 
+use ESHUsers\Form\LoginFilter;
+
 class Login extends Form
 {
 	public function __construct()
@@ -11,15 +13,25 @@ class Login extends Form
 		parent::__construct('login');
 		$this->setAttribute('action', '/login');
 		$this->setAttribute('method', 'post');
-		$this->setInputFilter(new \ESHUsers\Form\LoginFilter());
+		$this->setInputFilter(new LoginFilter());
 
 		$this->add(array(
-			'name' => 'username',
+			'name' => 'nome',
 			'attibutes' => array(
 				'type' => 'text',
 			),
 			'options' => array(
 				'label' => 'Login:'
+			)
+		));
+
+		$this->add(array(
+			'name' => 'email',
+			'attributes' => array(
+				'type' => 'password',
+			),
+			'options' => array(
+				'label' => 'Senha'
 			)
 		));
 
